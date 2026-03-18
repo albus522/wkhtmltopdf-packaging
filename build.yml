@@ -172,7 +172,7 @@ docker-targets:
       libfreetype6
       libjpeg-turbo8
       libpng16-16
-      libssl3
+      libssl1.1
       libstdc++6
       libx11-6
       libxcb1

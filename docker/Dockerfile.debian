@@ -8,14 +8,19 @@ ENV  CFLAGS=-w CXXFLAGS=-w
 
 RUN apt-get update && apt-get install -y -q --no-install-recommends \
     build-essential \
+    curl \
     libfontconfig1-dev \
     libfreetype6-dev \
     $jpeg \
     libpng-dev \
-    $ssl \
     libx11-dev \
     libxext-dev \
     libxrender-dev \
     $python \
     zlib1g-dev \
     && rm -rf /var/lib/apt/lists/*
+
+RUN curl -sSLf --retry 3 -o libssl1.1_1.1.0g-2ubuntu4_amd64.deb http://archive.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.1_1.1.0g-2ubuntu4_amd64.deb && \
+    dpkg -i libssl1.1_1.1.0g-2ubuntu4_amd64.deb && \
+    curl -sSLf --retry 3 -o libssl-dev_1.1.0g-2ubuntu4_amd64.deb http://archive.ubuntu.com/ubuntu/pool/main/o/openssl/libssl-dev_1.1.0g-2ubuntu4_amd64.deb && \
+    dpkg -i libssl-dev_1.1.0g-2ubuntu4_amd64.deb
